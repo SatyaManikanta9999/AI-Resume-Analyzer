@@ -11,6 +11,8 @@ import {
 } from 'lucide-react';
 import ScoreRing from '../components/ScoreRing';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 interface Analysis {
   _id: string;
   jobTitle: string;
@@ -84,7 +86,7 @@ export default function AnalysisDetailPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`/api/analysis/${id}`).then(r => {
+    axios.get(`${API_URL}/api/analysis/${id}`).then(r => {
       setAnalysis(r.data);
       setLoading(false);
     }).catch(() => setLoading(false));

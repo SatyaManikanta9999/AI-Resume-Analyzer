@@ -40,7 +40,7 @@ export default function HistoryPage() {
 
   const handleDelete = async (id: string) => {
     setDeleting(id);
-    await axios.delete(`/api/analysis/${id}`);
+    await axios.delete(`${API_URL}/api/analysis/${id}`);
     setAnalyses(prev => prev.filter(a => a._id !== id));
     setDeleting(null);
   };
