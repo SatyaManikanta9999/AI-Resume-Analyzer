@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { FileText, TrendingUp, Award, ArrowRight, Plus, BarChart2 } from 'lucide-react';
 import ScoreRing from '../components/ScoreRing';
+const API_URL = import.meta.env.VITE_API_URL;
 
 interface Analysis {
   _id: string;
@@ -20,7 +21,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/api/analysis').then(r => {
+    axios.get(`${API_URL}/api/analysis`).then(r => {
       setAnalyses(r.data);
       setLoading(false);
     }).catch(() => setLoading(false));

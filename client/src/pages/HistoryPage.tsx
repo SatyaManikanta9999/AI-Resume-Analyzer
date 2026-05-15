@@ -4,6 +4,8 @@ import axios from 'axios';
 import { ArrowRight, Trash2, FileText, Plus, Search } from 'lucide-react';
 import ScoreRing from '../components/ScoreRing';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 interface Analysis {
   _id: string;
   jobTitle: string;
@@ -21,7 +23,7 @@ export default function HistoryPage() {
   const [deleting, setDeleting] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get('/api/analysis').then(r => {
+    axios.get(`${API_URL}/api/analysis`).then(r => {
       setAnalyses(r.data);
       setFiltered(r.data);
       setLoading(false);

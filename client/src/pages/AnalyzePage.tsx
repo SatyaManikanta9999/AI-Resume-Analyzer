@@ -7,6 +7,8 @@ import {
   Upload, FileText, X, Loader2, Sparkles, CheckCircle2, ChevronDown
 } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 interface ResumeOption {
   _id: string;
   fileName: string;
@@ -27,9 +29,7 @@ export default function AnalyzePage() {
   const [analysisStage, setAnalysisStage] = useState('');
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    axios.get('/api/resume').then(r => setResumes(r.data));
-  }, []);
+  useEffect(() => { axios.get(`${API_URL}/api/resume`).then(r => setResumes(r.data));}, []);
 
   useEffect(() => {
     if (!socket) return;
@@ -91,7 +91,7 @@ export default function AnalyzePage() {
     setError('');
     setAnalysisStage('🚀 Sending to AI engine...');
     try {
-      await axios.post('/api/analysis/analyze', {
+      await axios.post(`${API_URL}/api/analysis/analyze`, {
         resumeId: selectedResumeId,
         jobTitle,
         jobDescription,
