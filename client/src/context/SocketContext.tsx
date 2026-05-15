@@ -21,7 +21,7 @@ export const SocketProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    const newSocket = io('http://localhost:5001', {
+    const newSocket = io(import.meta.env.VITE_API_URL, {
       auth: { token: user.token },
       transports: ['websocket'],
     });
