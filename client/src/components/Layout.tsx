@@ -20,9 +20,9 @@ export default function Layout() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen">
       {/* Sidebar */}
-      <aside className="w-64 bg-surface-800/80 backdrop-blur-xl border-r border-white/5 flex flex-col sticky top-0 h-screen">
+      <aside className="hidden md:flex md:w-64 bg-surface-800/80 backdrop-blur-xl border-r border-white/5 flex-col sticky top-0 h-screen">
         {/* Logo */}
         <div className="p-6 border-b border-white/5">
           <div className="flex items-center gap-3">
@@ -81,7 +81,7 @@ export default function Layout() {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 w-full overflow-auto">
         <Outlet />
       </main>
     </div>
