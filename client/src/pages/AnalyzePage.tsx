@@ -71,7 +71,7 @@ export default function AnalyzePage() {
     try {
       const fd = new FormData();
       fd.append('resume', uploadedFile);
-      const { data } = await axios.post('/api/resume/upload', fd);
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/api/resume/upload`, fd);
       setResumes(prev => [data, ...prev]);
       setSelectedResumeId(data._id);
       setUploadedFile(null);
