@@ -5,8 +5,9 @@ export interface IResume extends Document {
   fileName: string;
   originalText: string;
   fileSize: number;
-  uploadedAt: Date;
   analysisCount: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const resumeSchema = new Schema<IResume>(
